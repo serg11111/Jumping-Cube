@@ -272,7 +272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05666667, y: 0.14461486}
   m_AnchorMax: {x: 0.28, y: 0.26987162}
-  m_AnchoredPosition: {x: 97.63776, y: 153.32}
+  m_AnchoredPosition: {x: 97.63779, y: 153.32}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &260882598
@@ -588,7 +588,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 469af921ab5824058bcb72b96c484b24, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f3fcc732e2832884a84d72aa20dd0daf, type: 2}
 --- !u!1 &1058555417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.73333335, y: 0.14461486}
   m_AnchorMax: {x: 0.9533334, y: 0.26987162}
-  m_AnchoredPosition: {x: -101.08172, y: 153.32028}
+  m_AnchoredPosition: {x: -101.081726, y: 153.32028}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1905641794
