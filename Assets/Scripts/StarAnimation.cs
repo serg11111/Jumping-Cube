@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StarAnimation : MonoBehaviour
 {
+    private float speeed = 0.1f;
 
     private SpriteRenderer star;
     // Start is called before the first frame update
@@ -17,5 +18,8 @@ public class StarAnimation : MonoBehaviour
     void Update()
     {
         star.color = new Color(star.color.r, star.color.g, star.color.b, Mathf.PingPong(Time.time / 2.5f, 1.0f));
+
+        //move star
+        transform.position += transform.up * Time.deltaTime * speeed;
     }
 }
