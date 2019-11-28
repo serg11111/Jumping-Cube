@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class SpawnStarts : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public GameObject star;
+
     void Start()
     {
-        
+        StartCoroutine( spawn());    
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator spawn()
     {
-        
+        while (true)
+        {
+            //появление звезд будет случайным по высоте и ширине нашего экрана 
+            Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), Camera.main.farClipPlane / 2));
+            //создаем звезду в позиции pos, без вращения 
+            Instantiate(star, pos, Quaternion.identity);
+            //каждую секунду создается
+            yield return new WaitForSeconds(1f);
+        }
     }
+    
 }
