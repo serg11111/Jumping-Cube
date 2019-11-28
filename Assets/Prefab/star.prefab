@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8632642414741563603}
   - component: {fileID: 5905657174897173677}
+  - component: {fileID: 114866064285233872}
   m_Layer: 0
   m_Name: star
   m_TagString: Untagged
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d326a5dd5602a4e67a070348da01fa2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9628816b34b7d4152b44d0713589b714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -76,6 +77,18 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &114866064285233872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198490257885007930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bae4034d2a244dab1b09666e98ca55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
