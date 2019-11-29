@@ -27,6 +27,7 @@ public class DetectClics : MonoBehaviour
             buttons.GetComponent<ScrollObjects>().speed = -10f;
             buttons.GetComponent<ScrollObjects>().checkPos = -150f;
             m_cube.GetComponent<Animation>().Play("StartGameCube");
+            m_cube.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             cubes.GetComponent<Animation>().Play();
         }
     }
