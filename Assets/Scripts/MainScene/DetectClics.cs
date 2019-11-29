@@ -7,8 +7,16 @@ public class DetectClics : MonoBehaviour
 {
     public Text gameName, playText;
     public GameObject buttons, m_cube, cubes;
-    private bool clicked;
+    public Light dirLight;
+    private bool clicked = false;
 
+    private void Update()
+    {
+        if( clicked && dirLight.intensity != 0)
+        {
+            dirLight.intensity -= 0.03f;
+        }
+    }
     private void OnMouseDown()
     {
         if (!clicked)
