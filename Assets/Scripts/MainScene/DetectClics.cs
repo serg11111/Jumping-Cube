@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class DetectClics : MonoBehaviour
 {
+    public GameObject[] cubes;
     public Text gameName, playText;
-    public GameObject buttons, m_cube, cubes;
+    public GameObject buttons, m_cube;
+    public Animation cube_anim;
     public Light dirLight;
     private bool clicked = false;
 
@@ -21,6 +23,7 @@ public class DetectClics : MonoBehaviour
     {
         if (!clicked)
         {
+            StartCoroutine(delCubes());
             clicked = true;     //Works only ones 
             playText.gameObject.SetActive(false);
             gameName.text = "0";
@@ -28,7 +31,16 @@ public class DetectClics : MonoBehaviour
             buttons.GetComponent<ScrollObjects>().checkPos = -150f;
             m_cube.GetComponent<Animation>().Play("StartGameCube");
             m_cube.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            cubes.GetComponent<Animation>().Play();
+            cube_anim.GetComponent<Animation>().Play();
+        }
+    }
+
+    IEnumerator delCubes()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.5f);
+            Destroy(cubes[i]);
         }
     }
 }
