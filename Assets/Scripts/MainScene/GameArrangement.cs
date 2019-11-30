@@ -51,5 +51,7 @@ public class GameArrangement : MonoBehaviour
     {
         yield return new WaitForSeconds(m_cube.GetComponent<Animation>().clip.length + 0.3f );
         block.Play();
+
+        m_cube.AddComponent<Rigidbody>();
     }
 }
