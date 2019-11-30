@@ -40,7 +40,7 @@ public class GameArrangement : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.5f);
-            Destroy(cubes[i]);
+            cubes[i].GetComponent<FallCube>().enabled = true;
         }
     }
 }
