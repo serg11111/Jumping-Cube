@@ -7,7 +7,7 @@ public class GameArrangement : MonoBehaviour
 {
     public GameObject[] cubes;
     public Text gameName, playText;
-    public GameObject buttons, m_cube;
+    public GameObject buttons, m_cube, spawn_blocks;
     public Animation cube_anim, block;
     public Light dirLight;
     private bool clicked = false;
@@ -44,6 +44,7 @@ public class GameArrangement : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             cubes[i].GetComponent<FallCube>().enabled = true;
         }
+        spawn_blocks.GetComponent<SpawnBlocks>().enabled = true;
     }
     //превращение последнего кубика в блок-платформу
     IEnumerator cubeToBlock()
