@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class DetectClics : MonoBehaviour
+public class GameArrangement : MonoBehaviour
 {
     public GameObject[] cubes;
     public Text gameName, playText;
