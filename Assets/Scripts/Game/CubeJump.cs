@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CubeJump : MonoBehaviour
 {
+    public static bool jump, nextBlock;
 	public GameObject mainCube;
-    private bool animate, nextBlock, lose;
+    private bool animate, lose;
     private float startTime, yPosCube;
 
     private void Start()
@@ -32,9 +33,9 @@ public class CubeJump : MonoBehaviour
         if (mainCube != null)
         {
             //если куб окончательно упал игра окончена
-            if (mainCube.transform.localPosition.y < -18.0f)
+            if (mainCube.transform.position.y < -18.0f)
             {
-                Destroy(mainCube, 1f);
+                Destroy(mainCube, 0.5f);
                 print("Player Lose");
                 lose = true;
             }
@@ -62,7 +63,7 @@ public class CubeJump : MonoBehaviour
 
             //Jump
 
-
+            jump = true;
             float force, diff; //сила и время между нажатием и отжатием
             diff = Time.time - startTime;
             if (diff < 3f)

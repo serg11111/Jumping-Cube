@@ -28,7 +28,7 @@ public class GameArrangement : MonoBehaviour
             clicked = true;     //Works only ones 
             playText.gameObject.SetActive(false);
             gameName.text = "0";
-            buttons.GetComponent<ScrollObjects>().speed = -10f;
+            buttons.GetComponent<ScrollObjects>().speed = -5f;
             buttons.GetComponent<ScrollObjects>().checkPos = -150f;
             m_cube.GetComponent<Animation>().Play("StartGameCube");
             StartCoroutine(cubeToBlock());

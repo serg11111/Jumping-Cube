@@ -12,13 +12,7 @@ public class SpawnBlocks : MonoBehaviour
 
     void Start()
     {
-        //куда блок должен прибыть
-        blockPos = new Vector3(Random.Range(1.2f, 1.7f), Random.Range(-2f, 1f), 3f);
-        //где блок появится
-        blockInst = Instantiate(block, new Vector3(5f, -5f, 0f), Quaternion.identity) as GameObject;
-        //формирование размера блока
-        blockInst.transform.localScale = new Vector3(RandSkale(), blockInst.transform.localScale.y, blockInst.transform.localScale.z);
-        blockInst.transform.parent = allCubes.transform;
+        spawn();
     }
 
     private void Update()
@@ -30,6 +24,12 @@ public class SpawnBlocks : MonoBehaviour
         }else if(blockInst.transform.position == blockPos)
         {
             onPlace = true;
+        }
+        if(CubeJump.jump && CubeJump.nextBlock)
+        {
+            spawn();
+
+            onPlace = false;
         }
     }
 
@@ -44,5 +44,16 @@ public class SpawnBlocks : MonoBehaviour
         else rand = Random.Range(1.5f, 2f);
 
         return rand;
+    }
+
+    void spawn()
+    {
+        //куда блок должен прибыть
+        blockPos = new Vector3(Random.Range(1.2f, 1.7f), Random.Range(-2f, 1f), 3f);
+        //где блок появится
+        blockInst = Instantiate(block, new Vector3(5f, -5f, 0f), Quaternion.identity) as GameObject;
+        //формирование размера блока
+        blockInst.transform.localScale = new Vector3(RandSkale(), blockInst.transform.localScale.y, blockInst.transform.localScale.z);
+        blockInst.transform.parent = allCubes.transform;
     }
 }
