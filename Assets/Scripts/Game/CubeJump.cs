@@ -8,6 +8,7 @@ public class CubeJump : MonoBehaviour
 	public GameObject mainCube;
     private bool animate, lose;
     private float startTime, yPosCube;
+    public static int count_blocks; 
 
     private void Start()
     {
@@ -107,6 +108,7 @@ public class CubeJump : MonoBehaviour
             {
                 nextBlock = true;
                 print("next one");
+                count_blocks++;
 
                 //выравнивает куб на платформе
                 mainCube.transform.localPosition = new Vector3(-1.45f, mainCube.transform.localPosition.y, mainCube.transform.localPosition.z);
