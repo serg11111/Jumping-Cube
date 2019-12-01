@@ -9,9 +9,12 @@ public class SpawnBlocks : MonoBehaviour
     private Vector3 blockPos;
     public float speed = 10f;
     void Start()
-    { 
-        blockPos = new Vector3(Random.Range(1.2f, 1.7f), Random.Range(-2f, 2f), 3f);
+    {
+        //куда блок должен прибыть
+        blockPos = new Vector3(Random.Range(1.2f, 1.7f), Random.Range(-2f, 1f), 3f);
+        //где блок появится
         blockInst = Instantiate(block, new Vector3(5f, -5f, 0f), Quaternion.identity) as GameObject;
+        //формирование размера блока
         blockInst.transform.localScale = new Vector3(RandSkale(), blockInst.transform.localScale.y, blockInst.transform.localScale.z);
     }
 
@@ -19,9 +22,12 @@ public class SpawnBlocks : MonoBehaviour
     {
         if(blockInst.transform.position != blockPos)
         {
+            //перемещение блока
             blockInst.transform.position = Vector3.MoveTowards(blockInst.transform.position, blockPos, Time.deltaTime * speed);
         }
     }
+
+    //размер блока
     float RandSkale()
     {
         float rand;

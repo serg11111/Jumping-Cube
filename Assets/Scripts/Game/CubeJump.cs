@@ -5,16 +5,20 @@ using UnityEngine;
 public class CubeJump : MonoBehaviour
 {
 	public GameObject mainCube;
-    private bool animate, jumped;
+    private bool animate, nextBlock, lose;
     private float startTime, yPosCube;
 
+    private void Start()
+    {
+        StartCoroutine(CanJump());
+    }
 
     private void FixedUpdate()
     {
         if(animate && mainCube.transform.localScale.y > 1.0f)
         {
             PressCube(-1.5f);
-        } else if (!animate)
+        } else if (!animate && mainCube != null)
         {
             if(mainCube.transform.localScale.y < 1.5f)
             {
@@ -24,22 +28,22 @@ public class CubeJump : MonoBehaviour
                 mainCube.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             }
         }
-        if (mainCube.GetComponent<Rigidbody>())
+
+        if (mainCube != null)
         {
-            if(mainCube.GetComponent<Rigidbody>().IsSleeping()&& jumped)
+            //если куб окончательно упал игра окончена
+            if (mainCube.transform.localPosition.y < -18.0f)
             {
-                print("next one");
-                //выравнивает куб на платформе
-                mainCube.transform.localPosition = new Vector3(-1.45f, mainCube.transform.localPosition.y, mainCube.transform.localPosition.z);
-                //направление не меняется при перевороте
-                mainCube.transform.eulerAngles = new Vector3(0f, mainCube.transform.eulerAngles.y, 0f);
+                Destroy(mainCube, 1f);
+                print("Player Lose");
+                lose = true;
             }
         }
     }
 
     void OnMouseDown()
 	{
-        if(mainCube.GetComponent<Rigidbody>())
+        if(nextBlock && mainCube.GetComponent<Rigidbody>())
         {
             animate = true;
             startTime = Time.time;
@@ -52,24 +56,25 @@ public class CubeJump : MonoBehaviour
     void OnMouseUp()
 	{
 
-        if (mainCube.GetComponent<Rigidbody>())
+        if (nextBlock && mainCube.GetComponent<Rigidbody>())
         {
             animate = false;
 
             //Jump
-            jumped = true;
+
 
             float force, diff; //сила и время между нажатием и отжатием
             diff = Time.time - startTime;
             if (diff < 3f)
                 force = 200 * diff;
-            else force = 300f;
-            if (force < 150f)
-                force = 150f;
+            else force = 350f;
+            if (force < 100f)
+                force = 100f;
             mainCube.GetComponent<Rigidbody>().AddRelativeForce(mainCube.transform.up * force);
             mainCube.GetComponent<Rigidbody>().AddRelativeForce(mainCube.transform.right * -force *0.5f);
 
             StartCoroutine(checkCubePos());
+            nextBlock = false;
         }
     }
     void PressCube(float force)
@@ -80,12 +85,43 @@ public class CubeJump : MonoBehaviour
 
     IEnumerator checkCubePos()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1.5f);
         if (Mathf.Abs(yPosCube - mainCube.transform.localPosition.y) < 0.5f)
         {
-            
-                print("Player lose");
-            
+
+            print("Player lose");
+            lose = true;
+
         }
+        else
+        {
+            while (!mainCube.GetComponent<Rigidbody>().IsSleeping())
+            {
+                yield return new WaitForSeconds(0.05f);
+                if (mainCube == null)
+                    break;
+            }
+
+            if (!lose)
+            {
+                nextBlock = true;
+                print("next one");
+
+                //выравнивает куб на платформе
+                mainCube.transform.localPosition = new Vector3(-1.45f, mainCube.transform.localPosition.y, mainCube.transform.localPosition.z);
+                //направление не меняется при перевороте
+                mainCube.transform.eulerAngles = new Vector3(0f, mainCube.transform.eulerAngles.y, 0f);
+            }
+        }
+    }
+
+    IEnumerator CanJump()
+    {
+        while (!mainCube.GetComponent<Rigidbody>())
+        yield return new WaitForSeconds(0.05f);
+
+        yield return new WaitForSeconds(1f);
+        nextBlock = true;
+        
     }
 }
