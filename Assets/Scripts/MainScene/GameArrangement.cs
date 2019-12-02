@@ -31,7 +31,7 @@ public class GameArrangement : MonoBehaviour
             record.gameObject.SetActive(true);
             gameName.text = "0";
             buttons.GetComponent<ScrollObjects>().speed = -5f;
-            buttons.GetComponent<ScrollObjects>().checkPos = -150f;
+            buttons.GetComponent<ScrollObjects>().checkPos = -190f;
             m_cube.GetComponent<Animation>().Play("StartGameCube");
             StartCoroutine(cubeToBlock());
             m_cube.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);

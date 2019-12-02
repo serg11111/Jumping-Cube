@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeJump : MonoBehaviour
 {
     public static bool jump, nextBlock;
-	public GameObject mainCube;
+	public GameObject mainCube, buttons, lose_buttons;
     private bool animate, lose;
     private float startTime, yPosCube;
     public static int count_blocks; 
@@ -41,6 +41,18 @@ public class CubeJump : MonoBehaviour
                 lose = true;
             }
         }
+        if (lose)
+            PlayerLose();
+    }
+
+    void PlayerLose()
+    {
+        buttons.GetComponent<ScrollObjects>().speed = 5f;
+        buttons.GetComponent<ScrollObjects>().checkPos = 50;
+        if (!lose_buttons.activeSelf)
+            lose_buttons.SetActive(true);
+        lose_buttons.GetComponent<ScrollObjects>().speed = 5f;
+        lose_buttons.GetComponent<ScrollObjects>().checkPos = 130;
     }
 
     void OnMouseDown()
