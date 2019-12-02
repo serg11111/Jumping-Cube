@@ -5,13 +5,12 @@ using UnityEngine;
 public class ScrollObjects : MonoBehaviour
 {
 
-    public float speed = 5f, checkPos;
+    public float speed = 5f, checkPos = 0f;
     private RectTransform rec;
 
     
     void Start()
     {
-        checkPos = 0f;
         rec = GetComponent<RectTransform>();
     }
 

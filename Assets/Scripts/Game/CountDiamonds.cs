@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class CountDiamonds : MonoBehaviour
 {
-    // Start is called before the first frame update
+	private Text txt;
+
     void Start()
     {
-        
+		txt = GetComponent<Text>();
+        txt.text = PlayerPrefs.GetInt("Diamonds").ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
 }
