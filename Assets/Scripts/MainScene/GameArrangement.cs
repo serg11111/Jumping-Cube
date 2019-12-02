@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameArrangement : MonoBehaviour
 {
     public GameObject[] cubes;
-    public Text gameName, playText, study;
+    public Text gameName, playText, study, record;
     public GameObject buttons, m_cube, spawn_blocks;
     public Animation cube_anim, block;
     public Light dirLight;
@@ -28,6 +28,7 @@ public class GameArrangement : MonoBehaviour
             clicked = true;     //Works only ones 
             playText.gameObject.SetActive(false);
             study.gameObject.SetActive(true);
+            record.gameObject.SetActive(true);
             gameName.text = "0";
             buttons.GetComponent<ScrollObjects>().speed = -5f;
             buttons.GetComponent<ScrollObjects>().checkPos = -150f;
