@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScrollObjects : MonoBehaviour
 {
 
-    public float speed = 5f, checkPos = 0.0F;
+    public float speed = 5f, checkPos = 0f;
     private RectTransform rec;
 
     

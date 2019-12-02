@@ -13,6 +13,7 @@ public class CubeJump : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CanJump());
+        jump = false;
     }
 
     private void FixedUpdate()
