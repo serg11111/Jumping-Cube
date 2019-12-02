@@ -23,7 +23,9 @@ public class Buttons : MonoBehaviour
 
                 SceneManager.LoadScene("main");
                 break;
-
+            case "Facebook":
+                Application.OpenURL("https://www.facebook.com/profile.php?id=100023027381617&ref=bookmarks");
+                break;
         }
     }
 }
