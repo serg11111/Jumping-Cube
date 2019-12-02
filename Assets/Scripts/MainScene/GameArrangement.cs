@@ -7,7 +7,7 @@ public class GameArrangement : MonoBehaviour
 {
     public GameObject[] cubes;
     public Text gameName, playText, study, record;
-    public GameObject buttons, m_cube, spawn_blocks;
+    public GameObject buttons, m_cube, spawn_blocks, diamonds;
     public Animation cube_anim, block;
     public Light dirLight;
     private bool clicked = false;
@@ -29,6 +29,7 @@ public class GameArrangement : MonoBehaviour
             playText.gameObject.SetActive(false);
             study.gameObject.SetActive(true);
             record.gameObject.SetActive(true);
+            diamonds.SetActive(true);
             gameName.text = "0";
             buttons.GetComponent<ScrollObjects>().speed = -5f;
             buttons.GetComponent<ScrollObjects>().checkPos = -190f;
