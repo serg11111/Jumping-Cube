@@ -57,7 +57,7 @@ public class SpawnBlocks : MonoBehaviour
         blockInst.transform.parent = allCubes.transform;
 
         //формирование алмаза
-        if (CubeJump.count_blocks % 6 == 0 && CubeJump.count_blocks != 0)
+        if (CubeJump.count_blocks % 3 == 0 && CubeJump.count_blocks != 0)
         {
             GameObject diamondInst = Instantiate(diamond, new Vector3(blockInst.transform.position.x, blockInst.transform.position.y + 0.8f, blockInst.transform.position.z), Quaternion.Euler(Camera.main.transform.eulerAngles)) as GameObject;
             diamondInst.transform.parent = blockInst.transform;
