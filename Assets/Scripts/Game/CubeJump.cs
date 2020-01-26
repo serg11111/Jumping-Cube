@@ -8,12 +8,16 @@ public class CubeJump : MonoBehaviour
 	public GameObject mainCube, buttons, lose_buttons;
     private bool animate, lose;
     private float startTime, yPosCube;
-    public static int count_blocks; 
+    public static int count_blocks;
 
+    private void Awake()
+    {
+        jump = false;
+        nextBlock = false;
+    }
     private void Start()
     {
         StartCoroutine(CanJump());
-        jump = false;
     }
 
     private void FixedUpdate()

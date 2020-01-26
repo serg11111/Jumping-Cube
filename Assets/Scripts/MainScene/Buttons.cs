@@ -7,14 +7,16 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
     public Sprite mus_on, mus_off;
+    public GameObject shopBG;
+    public float Bigger, Lower;
 
     private void Start()
     {
-        if(gameObject.name == "Music")
+        if(gameObject.name == "Settings")
         {
             if(PlayerPrefs.GetString("Music") == "off")
             {
-                GetComponent<Image>().sprite = mus_off;
+                transform.GetChild(0).gameObject.GetComponent<Image>().sprite = mus_off;
                 Camera.main.GetComponent<AudioListener>().enabled = false; //выключить музыку
             }
         }
@@ -22,12 +24,12 @@ public class Buttons : MonoBehaviour
 
     private void OnMouseDown()
     {
-        transform.localScale = new Vector3(1.2F, 1.2F, 1.2F);
+        transform.localScale = new Vector3(Bigger, Bigger, Bigger);
     }
 
     private void OnMouseUp()
     {
-        transform.localScale = new Vector3(1F, 1F, 1F);
+        transform.localScale = new Vector3(Lower, Lower, Lower);
     }
 
     private void OnMouseUpAsButton()
@@ -70,6 +72,14 @@ public class Buttons : MonoBehaviour
                 {
                     transform.GetChild(i).gameObject.SetActive(!transform.GetChild(i).gameObject.activeSelf);
                 }
+                break;
+
+            case "Shop":
+                shopBG.SetActive(!shopBG.activeSelf);
+
+                break;
+            case "Close":
+                shopBG.SetActive(false );
                 break;
         }
     }
