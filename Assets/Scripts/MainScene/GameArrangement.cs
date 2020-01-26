@@ -7,7 +7,7 @@ public class GameArrangement : MonoBehaviour
 {
     public GameObject[] cubes;
     public Text gameName, playText, study, record;
-    public GameObject buttons, m_cube, spawn_blocks, diamonds;
+    public GameObject buttons, m_cube, spawn_blocks, diamonds, music;
     public Animation cube_anim, block;
     public Light dirLight;
     private bool clicked = false;
