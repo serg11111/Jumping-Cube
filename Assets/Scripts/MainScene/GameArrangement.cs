@@ -30,6 +30,16 @@ public class GameArrangement : MonoBehaviour
             study.gameObject.SetActive(true);
             record.gameObject.SetActive(true);
             diamonds.SetActive(true);
+
+            //Скрыть кнопки настройки, если активны
+            if (music.activeSelf)
+            {
+                for (int i = 0; i < music.transform.parent.transform.childCount; i++)
+                {
+                    music.transform.parent.transform.GetChild(i).gameObject.SetActive(!music.transform.parent.transform.GetChild(i).gameObject.activeSelf);
+                }
+            }
+
             gameName.text = "0";
             buttons.GetComponent<ScrollObjects>().speed = -5f;
             buttons.GetComponent<ScrollObjects>().checkPos = -190f;

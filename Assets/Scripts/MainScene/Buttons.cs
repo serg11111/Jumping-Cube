@@ -8,6 +8,18 @@ public class Buttons : MonoBehaviour
 {
     public Sprite mus_on, mus_off;
 
+    private void Start()
+    {
+        if(gameObject.name == "Music")
+        {
+            if(PlayerPrefs.GetString("Music") == "off")
+            {
+                GetComponent<Image>().sprite = mus_off;
+                Camera.main.GetComponent<AudioListener>().enabled = false; //выключить музыку
+            }
+        }
+    }
+
     private void OnMouseDown()
     {
         transform.localScale = new Vector3(1.2F, 1.2F, 1.2F);
@@ -42,11 +54,13 @@ public class Buttons : MonoBehaviour
                 {
                     GetComponent<Image>().sprite = mus_on;
                     PlayerPrefs.SetString("Music", "on");
+                    Camera.main.GetComponent<AudioListener>().enabled = true; //включить музыку
                 }
                 else
                 {
                     GetComponent<Image>().sprite = mus_off;
                     PlayerPrefs.SetString("Music", "off");
+                    Camera.main.GetComponent<AudioListener>().enabled = false; //выключить музыку
                 }
                 break;
 
