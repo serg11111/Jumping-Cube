@@ -5,17 +5,37 @@ using UnityEngine;
 public class ShopBG : MonoBehaviour
 {
 
-    public GameObject detectClick, allCubes;
+    private bool activeLose, activePlayTxt;
+    public GameObject detectClick, allCubes, playTxt, loseBtn;
 
     void OnEnable()
     {
-        detectClick.SetActive(false);
+        if (playTxt.activeSelf)
+        { 
+            activePlayTxt = true;
+            playTxt.SetActive(false);
+        }
+        playTxt.SetActive(false);
+        detectClick.GetComponent<BoxCollider>().enabled = false;
         allCubes.SetActive(true);
+        if (loseBtn.activeSelf)
+        {
+            activeLose = true;
+            loseBtn.SetActive(false);
+        }
     }
 
     void OnDisable()
     {
-        detectClick.SetActive(true);
+        if (activeLose)
+        {
+            loseBtn.SetActive(true);
+        }
+        if (playTxt.activeSelf)
+        {
+            playTxt.SetActive(true);
+        }
+        detectClick.GetComponent<BoxCollider>().enabled = true;
         allCubes.SetActive(false);
     }
     

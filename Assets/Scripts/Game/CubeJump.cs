@@ -6,7 +6,7 @@ public class CubeJump : MonoBehaviour
 {
     public static bool jump, nextBlock;
 	public GameObject mainCube, buttons, lose_buttons;
-    private bool animate, lose;
+    private bool animate, lose, addLose;
     private float startTime, yPosCube;
     public static int count_blocks;
 
@@ -46,12 +46,13 @@ public class CubeJump : MonoBehaviour
                 lose = true;
             }
         }
-        if (lose)
+        if (lose && !addLose)
             PlayerLose();
     }
 
     void PlayerLose()
     {
+        addLose = true;
         buttons.GetComponent<ScrollObjects>().speed = 5f;
         buttons.GetComponent<ScrollObjects>().checkPos = 50;
         if (!lose_buttons.activeSelf)
