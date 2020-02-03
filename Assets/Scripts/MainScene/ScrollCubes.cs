@@ -11,18 +11,18 @@ public class ScrollCubes : MonoBehaviour
 
     void Update()
     {
-        if(cubes.transform.position.x > 0)
+        if(cubes.transform.position.x > 1)
         {
-            cubes.transform.position = Vector3.MoveTowards(cubes.transform.position, new Vector3(0f, cubes.transform.position.y, cubes.transform.position.z), Time.deltaTime * 10f);
-        }else if(cubes.transform.position.x < -5)
+            cubes.transform.position = Vector3.MoveTowards(cubes.transform.position, new Vector3(1f, cubes.transform.position.y, cubes.transform.position.z), Time.deltaTime * 10f);
+        }else if(cubes.transform.position.x < -6f)
         {
-            cubes.transform.position = Vector3.MoveTowards(cubes.transform.position, new Vector3(-5f, cubes.transform.position.y, cubes.transform.position.z), Time.deltaTime * 10f);
+            cubes.transform.position = Vector3.MoveTowards(cubes.transform.position, new Vector3(-6f, cubes.transform.position.y, cubes.transform.position.z), Time.deltaTime * 10f);
         }
     }
 
     void OnMouseDown()
     {
-        _lockedYpos = 2f;
+        _lockedYpos =  2f;
         offset = cubes.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         Cursor.visible = false;     //курсор не виден
     }
